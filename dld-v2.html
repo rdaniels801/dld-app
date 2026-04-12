@@ -240,6 +240,23 @@ input[type="date"]::-webkit-calendar-picker-indicator,input[type="time"]::-webki
 .mbtn.ghost{background:transparent;border:1px solid var(--border);color:var(--muted);}
 .mbtn.ghost:hover{border-color:var(--text);color:var(--text);}
 /* CURIOSITY */
+/* How-to */
+.ck-howto-wrap{border-bottom:1px solid var(--border);overflow:hidden;}
+.ck-howto-hdr{display:flex;align-items:center;justify-content:space-between;padding:12px 22px;cursor:pointer;font-family:var(--fm);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);transition:background 0.2s;}
+.ck-howto-hdr:hover{background:var(--surface);}
+.ck-howto-arrow{transition:transform 0.25s;}
+.ck-howto-arrow.open{transform:rotate(180deg);}
+.ck-howto-body{display:none;padding:16px 22px 20px;gap:16px;border-top:1px solid var(--border);background:var(--surface);}
+.ck-howto-body.open{display:flex;flex-direction:column;animation:fadeUp 0.25s ease;}
+.ck-howto-section{padding-bottom:14px;border-bottom:1px solid var(--border);}
+.ck-howto-section:last-child{border-bottom:none;padding-bottom:0;}
+.ck-howto-title{font-family:var(--fd);font-weight:700;font-size:0.78rem;color:var(--gold);margin-bottom:6px;}
+.ck-howto-text{font-family:var(--fs);font-style:italic;font-size:0.82rem;color:var(--muted);line-height:1.7;}
+.ck-howto-text strong{color:var(--text);font-style:normal;}
+/* Submit */
+.ck-submit-wrap{width:100%;border-top:1px solid var(--border);padding-top:18px;margin-top:4px;}
+.ck-submit-title{font-family:var(--fd);font-weight:700;font-size:0.78rem;color:var(--text);margin-bottom:3px;}
+.ck-submit-sub{font-family:var(--fs);font-style:italic;font-size:0.72rem;color:var(--muted);}
 .app-card.ck::before{background:linear-gradient(135deg,rgba(232,196,42,0.07),transparent);}
 .app-card.ck .app-name{color:var(--gold);}
 .ck-hero{padding:30px 28px 22px;border-bottom:1px solid var(--border);}
@@ -609,6 +626,33 @@ input[type="date"]::-webkit-calendar-picker-indicator,input[type="time"]::-webki
     <div class="ck-logo">Curiosity <span>killed the 🐱</span></div>
     <div class="ck-sub">The magic 8-ball of bad ideas and very good ones. What will come up?</div>
   </div>
+
+  <!-- HOW TO -->
+  <div class="ck-howto-wrap">
+    <div class="ck-howto-hdr" id="ckHowtoHdr">
+      <span>ℹ️ How this works</span>
+      <span class="ck-howto-arrow" id="ckHowtoArrow">▾</span>
+    </div>
+    <div class="ck-howto-body" id="ckHowtoBody">
+      <div class="ck-howto-section">
+        <div class="ck-howto-title">🔮 The Generator</div>
+        <div class="ck-howto-text">Hit <strong>Generate</strong> to reveal a random suggestion — anything from sensual and playful to kinky and very NSFW. Each suggestion is shown once per person until you've rated everything, then the pool resets. Rate what comes up before generating the next one.</div>
+      </div>
+      <div class="ck-howto-section">
+        <div class="ck-howto-title">👍 👎 ✏️ Rating</div>
+        <div class="ck-howto-text"><strong>Thumbs up</strong> — you're into it and want to explore it.<br><strong>Thumbs down</strong> — hard pass, not for you.<br><strong>Modify</strong> — you like the idea but want to adjust it. Your modified version saves to your 👍 list with your note attached.<br><br>You can change any response later using the ✎ pencil in your list.</div>
+      </div>
+      <div class="ck-howto-section">
+        <div class="ck-howto-title">📋 The Lists</div>
+        <div class="ck-howto-text"><strong>Ryan's List / Aryel's List</strong> — your individual responses, visible to each other. Think of it as an indirect way to share what you're curious about without having to bring it up directly.<br><br><strong>✦ Mutual</strong> — appears when you've both thumbed up the same thing. That's your shortlist.<br><br><strong>🔍 Comparison View</strong> — shows every item you've both rated side by side. 🟢 Green Light means you're both in. 🛑 Stop Sign means one of you isn't.</div>
+      </div>
+      <div class="ck-howto-section">
+        <div class="ck-howto-title">✍️ Add Your Own</div>
+        <div class="ck-howto-text">Use the <strong>Add to Generator</strong> form to submit your own suggestion. It'll be added to the pool and can come up for either of you during future generates.</div>
+      </div>
+    </div>
+  </div>
+
   <div class="sender-row">
     <div class="sender-lbl">Rating as:</div>
     <div class="pill-row">
@@ -639,6 +683,14 @@ input[type="date"]::-webkit-calendar-picker-indicator,input[type="time"]::-webki
         <button class="ck-mod-submit" id="ckModSubmit">Save Modification</button>
       </div>
       <div class="ck-pool-note" id="ckPoolNote"></div>
+
+      <!-- SUBMIT TO GENERATOR -->
+      <div class="ck-submit-wrap">
+        <div class="ck-submit-title">✍️ Add to Generator</div>
+        <div class="ck-submit-sub">Submit your own suggestion — it'll enter the pool for both of you</div>
+        <textarea class="ck-mod-input" id="ckSubmitInput" placeholder="Type your suggestion here…" style="margin-top:10px;"></textarea>
+        <button class="ck-mod-submit" id="ckSubmitBtn" style="background:var(--gold);color:#000;">Add to Pool</button>
+      </div>
     </div>
     <!-- Lists -->
     <div class="ck-lists">
@@ -781,6 +833,7 @@ function startDB(){
     _ckRatings=s.docs.map(d=>({...d.data(),_fid:d.id}));
     renderCKLists();
   },e=>{console.error('ck_ratings snapshot:',e);});
+  loadCustomPool();
 }
 
 const _db=()=>firebase.firestore();
@@ -1113,6 +1166,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 
   // CK
   $('ckBack').addEventListener('click',()=>showScreen('hubScreen'));
+  $('ckHowtoHdr').addEventListener('click',ckToggleHowto);
   $('ckPillRyan').addEventListener('click',()=>setCKUser('ryan'));
   $('ckPillAryel').addEventListener('click',()=>setCKUser('aryel'));
   $('ckGenBtn').addEventListener('click',ckGenerate);
@@ -1120,6 +1174,8 @@ document.addEventListener('DOMContentLoaded',()=>{
   $('ckDown').addEventListener('click',()=>ckRate('down'));
   $('ckMod').addEventListener('click',ckToggleMod);
   $('ckModSubmit').addEventListener('click',ckSubmitMod);
+  $('ckSubmitBtn').addEventListener('click',ckSubmitCustom);
+  $('ckSubmitInput').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();ckSubmitCustom();}});
   $('ckRyanHdr').addEventListener('click',()=>ckToggleList('ryan'));
   $('ckAryelHdr').addEventListener('click',()=>ckToggleList('aryel'));
   $('ckCompHdr').addEventListener('click',()=>ckToggleList('comp'));
@@ -1170,8 +1226,32 @@ let ckUser=null;
 let ckCurrent=null;
 let ckShown=new Set();// ids of rated items in this session pool
 
-function startCKListener(){
-  // CK ratings listener is started inside startDB — nothing extra needed here
+function ckToggleHowto(){
+  const body=$('ckHowtoBody'),arrow=$('ckHowtoArrow');
+  body.classList.toggle('open');
+  arrow.classList.toggle('open');
+}
+
+async function ckSubmitCustom(){
+  if(!ckUser){toast('Select who you are first');return;}
+  const inp=$('ckSubmitInput'),v=inp.value.trim();
+  if(!v){toast('Type a suggestion first');return;}
+  // Save to Firebase custom pool
+  await _db().collection('ck_custom').add({text:v,submittedBy:ckUser,ts:Date.now()});
+  // Also add to local pool so it can come up immediately
+  CK_POOL.push(v);
+  inp.value='';
+  toast('✍️ Added to the generator pool!');
+}
+
+// Load custom submissions into pool on startup
+function loadCustomPool(){
+  _db().collection('ck_custom').onSnapshot(s=>{
+    s.docs.forEach(d=>{
+      const t=d.data().text;
+      if(t&&!CK_POOL.includes(t)) CK_POOL.push(t);
+    });
+  });
 }
 
 function setCKUser(who){
