@@ -8,8 +8,7 @@
 <style>
 :root {
   --bg:#0d0d0d; --surface:#161616; --surface2:#1f1f1f; --border:#2a2a2a; --dim:#383838;
-  --text:#f0ede8; --muted:#888;
-  --form-bg:#1e1e1e; --form-border:#3a3a3a; --form-text:#e8e4de; --form-label:#aaa;
+  --text:#f0ede8; --muted:#666;
   --red:#e8412a; --orange:#e8892a; --teal:#2aace8; --green:#2ae87a;
   --gold:#e8c42a; --pink:#e8607a; --purple:#b060d0;
   --fd:'Syne',sans-serif; --fm:'Space Mono',monospace; --fs:'Instrument Serif',serif;
@@ -145,12 +144,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--fm);min-height:100
 .mode-desc{font-family:var(--fs);font-style:italic;font-size:0.72rem;color:var(--muted);line-height:1.4;}
 .solo-wrap{padding:20px 22px;}
 .solo-grid{display:flex;flex-direction:column;gap:7px;}
-.solo-item{background:var(--surface2);border:1px solid var(--form-border);border-radius:8px;padding:11px 14px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:all 0.2s;}
+.solo-item{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:11px 14px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:all 0.2s;}
 .solo-item:hover{border-color:var(--pink);}
 .solo-item.sel{border-color:var(--pink);background:rgba(232,96,122,0.08);}
 .solo-item.sel .chk{background:var(--pink);border-color:var(--pink);color:#000;}
 .chk{width:18px;height:18px;border-radius:4px;border:2px solid var(--dim);display:flex;align-items:center;justify-content:center;font-size:0.58rem;flex-shrink:0;transition:all 0.2s;}
-.si-name{font-family:var(--fs);font-size:0.92rem;color:#f0ede8;flex:1;letter-spacing:0.01em;}
+.si-name{font-family:var(--fs);font-size:0.92rem;color:var(--text);flex:1;}
 .si-tag{font-size:0.56rem;letter-spacing:0.08em;text-transform:uppercase;padding:2px 7px;border-radius:10px;border:1px solid var(--border);color:var(--muted);white-space:nowrap;}
 .diner-wrap{display:flex;flex:1;}
 .diner-menu{flex:1;padding:20px 22px;overflow-y:auto;}
@@ -164,16 +163,16 @@ body{background:var(--bg);color:var(--text);font-family:var(--fm);min-height:100
 .tier-panel{display:none;}
 .tier-panel.active{display:block;animation:fadeUp 0.3s ease;}
 .msec{margin-bottom:24px;}
-.msec-title{font-size:0.63rem;letter-spacing:0.12em;text-transform:uppercase;color:#999;margin-bottom:9px;padding-bottom:5px;border-bottom:1px solid var(--border);font-family:var(--fd);font-weight:700;}
+.msec-title{font-size:0.63rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:9px;padding-bottom:5px;border-bottom:1px solid var(--border);font-family:var(--fd);font-weight:700;}
 .mgrid{display:flex;flex-direction:column;gap:6px;}
-.mitem{background:var(--surface2);border:1px solid var(--form-border);border-radius:8px;padding:10px 12px;display:flex;align-items:center;gap:9px;transition:all 0.2s;}
+.mitem{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 12px;display:flex;align-items:center;gap:9px;transition:all 0.2s;}
 .mitem:hover{border-color:var(--dim);}
 .mitem.sel{border-color:var(--pink);background:rgba(232,96,122,0.07);}
 .mitem.sel .chk{background:var(--pink);border-color:var(--pink);color:#000;}
 .mitem.replacing{opacity:0.3;transform:scale(0.97);transition:all 0.22s;}
 .mi-body{flex:1;cursor:pointer;min-width:0;}
-.mi-name{font-family:var(--fs);font-size:0.88rem;color:#f0ede8;}
-.mi-note{font-size:0.63rem;color:#777;margin-top:2px;font-style:italic;}
+.mi-name{font-family:var(--fs);font-size:0.88rem;color:var(--text);}
+.mi-note{font-size:0.63rem;color:var(--muted);margin-top:2px;font-style:italic;}
 .mi-badge{font-size:0.54rem;letter-spacing:0.08em;text-transform:uppercase;padding:2px 6px;border-radius:10px;flex-shrink:0;white-space:nowrap;}
 .ba{background:rgba(232,137,42,0.1);color:var(--orange);border:1px solid rgba(232,137,42,0.3);}
 .bm{background:rgba(232,96,122,0.1);color:var(--pink);border:1px solid rgba(232,96,122,0.3);}
@@ -211,15 +210,14 @@ body{background:var(--bg);color:var(--text);font-family:var(--fm);min-height:100
 @media(max-width:680px){.sh-body{grid-template-columns:1fr;}}
 .sh-form{padding:22px 28px;border-right:1px solid var(--border);overflow-y:auto;}
 .sh-inbox{padding:18px;overflow-y:auto;}
-.form-block{margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid var(--border);}
-.form-block:last-of-type{border-bottom:none;}
-.form-label{display:block;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--form-label);margin-bottom:7px;font-weight:600;}
-.form-select,.form-input,.form-textarea{width:100%;background:var(--form-bg);border:1px solid var(--form-border);border-radius:7px;padding:10px 12px;font-family:var(--fm);font-size:0.76rem;color:var(--form-text);outline:none;transition:border-color 0.2s,box-shadow 0.2s;appearance:none;}
+.form-block{margin-bottom:16px;}
+.form-label{display:block;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:7px;}
+.form-select,.form-input,.form-textarea{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:7px;padding:10px 12px;font-family:var(--fm);font-size:0.76rem;color:var(--text);outline:none;transition:border-color 0.2s;appearance:none;}
 input[type="date"],input[type="time"]{color-scheme:dark;}
-input[type="date"]::-webkit-calendar-picker-indicator,input[type="time"]::-webkit-calendar-picker-indicator{filter:invert(1);opacity:0.6;cursor:pointer;background-color:transparent;}
+input[type="date"]::-webkit-calendar-picker-indicator,input[type="time"]::-webkit-calendar-picker-indicator{filter:invert(1) sepia(1) saturate(5) hue-rotate(175deg);opacity:0.8;cursor:pointer;}
 .form-select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='7' viewBox='0 0 10 7'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23666' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 11px center;padding-right:30px;cursor:pointer;}
 .form-select option{background:var(--surface2);}
-.form-select:focus,.form-input:focus,.form-textarea:focus{border-color:var(--teal);box-shadow:0 0 0 2px rgba(42,172,232,0.15);}
+.form-select:focus,.form-input:focus,.form-textarea:focus{border-color:var(--teal);}
 .form-textarea{resize:vertical;min-height:76px;line-height:1.5;font-family:var(--fs);font-style:italic;}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
 @media(max-width:480px){.form-row{grid-template-columns:1fr;}}
@@ -241,8 +239,75 @@ input[type="date"]::-webkit-calendar-picker-indicator,input[type="time"]::-webki
 .mbtn.teal:hover{background:#3abcf8;}
 .mbtn.ghost{background:transparent;border:1px solid var(--border);color:var(--muted);}
 .mbtn.ghost:hover{border-color:var(--text);color:var(--text);}
-.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--surface2);border:1px solid var(--dim);border-radius:8px;padding:10px 18px;font-family:var(--fm);font-size:0.7rem;color:var(--text);z-index:999;transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1);white-space:nowrap;pointer-events:none;}
-.toast.show{transform:translateX(-50%) translateY(0);}
+/* CURIOSITY */
+.app-card.ck::before{background:linear-gradient(135deg,rgba(232,196,42,0.07),transparent);}
+.app-card.ck .app-name{color:var(--gold);}
+.ck-hero{padding:30px 28px 22px;border-bottom:1px solid var(--border);}
+.ck-logo{font-family:var(--fd);font-weight:800;font-size:clamp(1.6rem,5vw,2.6rem);letter-spacing:-0.02em;}
+.ck-logo span{color:var(--gold);}
+.ck-sub{font-family:var(--fs);font-style:italic;color:var(--muted);font-size:0.85rem;margin-top:4px;}
+.ck-body{display:grid;grid-template-columns:1fr 320px;flex:1;}
+@media(max-width:700px){.ck-body{grid-template-columns:1fr;}}
+.ck-gen-wrap{padding:28px;border-right:1px solid var(--border);display:flex;flex-direction:column;align-items:center;gap:20px;}
+.ck-orb-wrap{position:relative;width:260px;height:260px;cursor:pointer;user-select:none;}
+.ck-orb{width:100%;height:100%;border-radius:50%;background:radial-gradient(circle at 35% 35%,#2a2a2a,#0a0a0a);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;transition:all 0.4s;box-shadow:0 0 40px rgba(0,0,0,0.8),inset 0 0 30px rgba(0,0,0,0.5);}
+.ck-orb.glowing{border-color:var(--gold);box-shadow:0 0 60px rgba(232,196,42,0.25),0 0 20px rgba(232,196,42,0.15),inset 0 0 30px rgba(0,0,0,0.5);}
+.ck-orb.shaking{animation:orbShake 0.5s ease;}
+@keyframes orbShake{0%,100%{transform:rotate(0deg)}20%{transform:rotate(-4deg)}40%{transform:rotate(4deg)}60%{transform:rotate(-3deg)}80%{transform:rotate(2deg)}}
+.ck-orb-inner{width:78%;height:78%;border-radius:50%;background:radial-gradient(circle at 40% 30%,#1a1a2e,#050510);display:flex;align-items:center;justify-content:center;padding:20px;border:1px solid rgba(232,196,42,0.1);}
+.ck-orb-text{font-family:var(--fs);font-style:italic;font-size:0.88rem;color:var(--gold);text-align:center;line-height:1.5;opacity:0;transition:opacity 0.5s;}
+.ck-orb-text.show{opacity:1;}
+.ck-orb-idle{font-family:var(--fm);font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--dim);text-align:center;}
+.ck-gen-btn{padding:13px 36px;background:var(--gold);border:none;border-radius:8px;font-family:var(--fd);font-weight:700;font-size:0.85rem;letter-spacing:0.12em;text-transform:uppercase;color:#000;cursor:pointer;transition:all 0.2s;}
+.ck-gen-btn:hover{background:#f0d040;transform:translateY(-1px);}
+.ck-gen-btn:disabled{background:var(--dim);color:var(--muted);cursor:not-allowed;transform:none;}
+.ck-actions{display:flex;gap:12px;align-items:center;opacity:0;transition:opacity 0.4s;pointer-events:none;}
+.ck-actions.show{opacity:1;pointer-events:all;}
+.ck-act-btn{width:52px;height:52px;border-radius:50%;border:2px solid var(--border);background:var(--surface);cursor:pointer;font-size:1.4rem;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
+.ck-act-btn:hover{transform:scale(1.1);}
+.ck-act-btn.up:hover{border-color:var(--green);background:rgba(42,232,122,0.1);}
+.ck-act-btn.down:hover{border-color:var(--red);background:rgba(232,65,42,0.1);}
+.ck-act-btn.mod:hover{border-color:var(--teal);background:rgba(42,172,232,0.1);}
+.ck-mod-area{width:100%;display:none;}
+.ck-mod-area.show{display:block;animation:fadeUp 0.3s ease;}
+.ck-mod-input{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-family:var(--fs);font-style:italic;font-size:0.85rem;color:var(--text);outline:none;resize:vertical;min-height:70px;transition:border-color 0.2s;}
+.ck-mod-input:focus{border-color:var(--teal);}
+.ck-mod-submit{margin-top:8px;padding:9px 20px;background:var(--teal);border:none;border-radius:6px;font-family:var(--fd);font-weight:700;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:#000;cursor:pointer;transition:all 0.2s;}
+.ck-mod-submit:hover{background:#3abcf8;}
+.ck-pool-note{font-size:0.62rem;color:var(--muted);font-family:var(--fm);text-align:center;}
+/* Lists */
+.ck-lists{padding:20px;overflow-y:auto;display:flex;flex-direction:column;gap:16px;}
+.ck-person-block{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+.ck-person-hdr{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;cursor:pointer;transition:background 0.2s;}
+.ck-person-hdr:hover{background:var(--surface2);}
+.ck-person-name{font-family:var(--fd);font-weight:700;font-size:0.88rem;color:var(--text);}
+.ck-person-count{font-size:0.62rem;color:var(--muted);font-family:var(--fm);}
+.ck-person-body{display:none;padding:12px 16px;border-top:1px solid var(--border);}
+.ck-person-body.open{display:block;}
+.ck-group-title{font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;font-family:var(--fd);font-weight:700;margin-bottom:7px;margin-top:12px;}
+.ck-group-title:first-child{margin-top:0;}
+.ck-group-title.up{color:var(--green);}
+.ck-group-title.mod{color:var(--teal);}
+.ck-group-title.down{color:var(--red);}
+.ck-entry{background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:8px 12px;margin-bottom:5px;font-family:var(--fs);font-size:0.82rem;color:var(--text);line-height:1.4;display:flex;align-items:flex-start;gap:8px;}
+.ck-entry-text{flex:1;}
+.ck-entry-note{font-size:0.7rem;color:var(--teal);margin-top:3px;font-style:italic;}
+.ck-edit-btn{background:transparent;border:none;color:var(--dim);font-size:0.7rem;cursor:pointer;padding:2px 4px;transition:color 0.2s;flex-shrink:0;margin-top:1px;}
+.ck-edit-btn:hover{color:var(--gold);}
+.ck-comp-item{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 12px;margin-bottom:7px;}
+.ck-comp-text{font-family:var(--fs);font-size:0.82rem;color:var(--text);margin-bottom:7px;line-height:1.4;}
+.ck-comp-row{display:flex;gap:8px;flex-wrap:wrap;}
+.ck-comp-tag{font-size:0.62rem;letter-spacing:0.07em;text-transform:uppercase;padding:3px 9px;border-radius:20px;font-family:var(--fm);white-space:nowrap;}
+.ck-comp-tag.go{background:rgba(42,232,122,0.12);color:var(--green);border:1px solid rgba(42,232,122,0.3);}
+.ck-comp-tag.stop{background:rgba(232,65,42,0.12);color:var(--red);border:1px solid rgba(232,65,42,0.3);}
+.ck-comp-tag.none{background:rgba(102,102,102,0.12);color:var(--muted);border:1px solid rgba(102,102,102,0.2);}
+.ck-group-title.comp-go{color:var(--green);}
+.ck-group-title.comp-stop{color:var(--red);}
+.ck-empty-list{font-family:var(--fs);font-style:italic;color:var(--muted);font-size:0.8rem;padding:4px 0;}
+/* Mutual */
+.ck-mutual{background:linear-gradient(135deg,rgba(232,196,42,0.1),rgba(232,96,122,0.07));border:1px solid rgba(232,196,42,0.3);border-radius:10px;padding:14px 16px;}
+.ck-mutual-title{font-family:var(--fd);font-weight:700;font-size:0.82rem;color:var(--gold);margin-bottom:10px;}
+.ck-mutual-item{background:rgba(232,196,42,0.06);border:1px solid rgba(232,196,42,0.2);border-radius:6px;padding:8px 12px;margin-bottom:5px;font-family:var(--fs);font-size:0.82rem;color:var(--text);}
 </style>
 </head>
 <body>
@@ -269,7 +334,7 @@ input[type="date"]::-webkit-calendar-picker-indicator,input[type="time"]::-webki
   <div class="hub-header">
     <div>
       <div class="hub-wm">Domestic Logistics <span class="amp">&</span> Debauchery</div>
-      <div class="hub-tg" id="hubTagline">Keeping the household running and the spark burning.</div>
+      <div class="hub-tg">Keeping the household running and the spark burning.</div>
     </div>
     <div style="display:flex;align-items:center;gap:12px;">
       <span id="dbStatus" style="font-size:0.6rem;letter-spacing:0.1em;font-family:var(--fm);"></span>
@@ -292,6 +357,15 @@ input[type="date"]::-webkit-calendar-picker-indicator,input[type="time"]::-webki
       <div>
         <div class="app-name">SyncHole</div>
         <div class="app-desc">Because "we need to talk" shouldn't feel like a jump scare.</div>
+      </div>
+      <div class="app-go">Open app →</div>
+    </div>
+    <div class="app-card ck" id="goCK" style="grid-column:1/-1;min-height:160px;">
+      <div class="app-num">03 /</div>
+      <span class="app-icon">🐱</span>
+      <div>
+        <div class="app-name">Curiosity killed the 🐱</div>
+        <div class="app-desc">The magic 8-ball of bad ideas and very good ones. Rate what comes up — the truth about what you're into lives here.</div>
       </div>
       <div class="app-go">Open app →</div>
     </div>
@@ -502,8 +576,8 @@ input[type="date"]::-webkit-calendar-picker-indicator,input[type="time"]::-webki
       <div class="form-block">
         <label class="form-label">3. When are you proposing?</label>
         <div class="form-row">
-          <input class="form-input" type="date" id="shDate" style="color-scheme:dark;">
-          <input class="form-input" type="time" id="shTime" style="color-scheme:dark;">
+          <input class="form-input" type="date" id="shDate">
+          <input class="form-input" type="time" id="shTime">
         </div>
       </div>
       <div class="form-block">
@@ -520,6 +594,92 @@ input[type="date"]::-webkit-calendar-picker-indicator,input[type="time"]::-webki
       <div class="sec-lbl">Inbox</div>
       <div class="inbox-meta" id="shMeta">No requests yet</div>
       <div id="shList"></div>
+    </div>
+  </div>
+</div>
+
+<!-- CURIOSITY -->
+<div id="ckScreen" class="screen">
+  <div class="back-bar">
+    <button class="back-btn" id="ckBack">← Hub</button>
+    <div class="bar-div"></div>
+    <div class="bar-title" style="color:var(--gold)">Curiosity killed the 🐱</div>
+  </div>
+  <div class="ck-hero">
+    <div class="ck-logo">Curiosity <span>killed the 🐱</span></div>
+    <div class="ck-sub">The magic 8-ball of bad ideas and very good ones. What will come up?</div>
+  </div>
+  <div class="sender-row">
+    <div class="sender-lbl">Rating as:</div>
+    <div class="pill-row">
+      <div class="pill" id="ckPillRyan">Ryan</div>
+      <div class="pill" id="ckPillAryel">Aryel</div>
+    </div>
+  </div>
+  <div class="ck-body">
+    <!-- Generator -->
+    <div class="ck-gen-wrap">
+      <div class="ck-orb-wrap" id="ckOrbWrap">
+        <div class="ck-orb" id="ckOrb">
+          <div class="ck-orb-inner">
+            <div id="ckOrbContent">
+              <div class="ck-orb-idle">Tap Generate<br>to reveal</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="ck-gen-btn" id="ckGenBtn">✦ Generate</button>
+      <div class="ck-actions" id="ckActions">
+        <button class="ck-act-btn up" id="ckUp" title="👍 I'm into it">👍</button>
+        <button class="ck-act-btn mod" id="ckMod" title="✏️ Modify">✏️</button>
+        <button class="ck-act-btn down" id="ckDown" title="👎 Hard pass">👎</button>
+      </div>
+      <div class="ck-mod-area" id="ckModArea">
+        <textarea class="ck-mod-input" id="ckModInput" placeholder="Modify it — adjust, add context, make it yours…"></textarea>
+        <button class="ck-mod-submit" id="ckModSubmit">Save Modification</button>
+      </div>
+      <div class="ck-pool-note" id="ckPoolNote"></div>
+    </div>
+    <!-- Lists -->
+    <div class="ck-lists">
+      <!-- Mutual -->
+      <div class="ck-mutual" id="ckMutual" style="display:none">
+        <div class="ck-mutual-title">✦ Mutual — You Both Want This</div>
+        <div id="ckMutualList"></div>
+      </div>
+      <!-- Ryan's list -->
+      <div class="ck-person-block">
+        <div class="ck-person-hdr" id="ckRyanHdr">
+          <div>
+            <div class="ck-person-name">Ryan's List</div>
+            <div class="ck-person-count" id="ckRyanCount">0 responses</div>
+          </div>
+          <span style="color:var(--muted);font-size:0.8rem">▾</span>
+        </div>
+        <div class="ck-person-body" id="ckRyanBody"></div>
+      </div>
+      <!-- Aryel's list -->
+      <div class="ck-person-block">
+        <div class="ck-person-hdr" id="ckAryelHdr">
+          <div>
+            <div class="ck-person-name">Aryel's List</div>
+            <div class="ck-person-count" id="ckAryelCount">0 responses</div>
+          </div>
+          <span style="color:var(--muted);font-size:0.8rem">▾</span>
+        </div>
+        <div class="ck-person-body" id="ckAryelBody"></div>
+      </div>
+      <!-- Comparison list -->
+      <div class="ck-person-block">
+        <div class="ck-person-hdr" id="ckCompHdr">
+          <div>
+            <div class="ck-person-name">🔍 Comparison View</div>
+            <div class="ck-person-count" id="ckCompCount">Both responses side by side</div>
+          </div>
+          <span style="color:var(--muted);font-size:0.8rem">▾</span>
+        </div>
+        <div class="ck-person-body" id="ckCompBody"></div>
+      </div>
     </div>
   </div>
 </div>
@@ -542,7 +702,7 @@ input[type="date"]::-webkit-calendar-picker-indicator,input[type="time"]::-webki
 const CFG={
   pins:{ryan:'4406',aryel:'2702'},
   phone:{ryan:'18018898788',aryel:'14062141410'},
-  appUrl:'https://rdaniels801.github.io/dld-app/dld-v2.html'
+  appUrl:'https://rdaniels801.github.io/dld-app/'
 };
 const FB_CFG={
   apiKey:"AIzaSyDF07LW3_qB10FpbDtKTu96PfxNcs0JmfA",
@@ -617,16 +777,10 @@ function startDB(){
     _setDbStatus(true);
     renderPending();renderCal();renderSHInbox();
   },e=>{_setDbStatus(false);console.error('requests snapshot:',e);});
-  // Load saved custom items into pools
-  db.collection('customItems').get().then(s=>{
-    s.docs.forEach(d=>{
-      const {pool,n,t}=d.data();
-      if(pool&&n&&POOLS[pool]&&!POOLS[pool].find(x=>x.n===n)){
-        POOLS[pool].push({n,t:t||'Custom'});
-      }
-    });
-    renderSavedSoloItems();
-  }).catch(e=>console.warn('custom items load:',e));
+  db.collection('ck_ratings').orderBy('ts','desc').onSnapshot(s=>{
+    _ckRatings=s.docs.map(d=>({...d.data(),_fid:d.id}));
+    renderCKLists();
+  },e=>{console.error('ck_ratings snapshot:',e);});
 }
 
 const _db=()=>firebase.firestore();
@@ -646,17 +800,17 @@ const toast=m=>{const t=$('toast');t.textContent=m;t.classList.add('show');setTi
 const anim=el=>{el.style.cssText='opacity:0;transform:translateY(6px);transition:all 0.28s ease;';setTimeout(()=>{el.style.opacity=1;el.style.transform='translateY(0)';},10);};
 function fmtDT(d,t){if(!d||!t)return'TBD';try{const x=new Date(d+'T'+t);return x.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'})+' at '+x.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'});}catch(e){return d+' '+t;}}
 function fmtDTL(s){try{const x=new Date(s);return x.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'})+' at '+x.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'});}catch(e){return s;}}
-function sms(who,msg){return'sms:'+CFG.phone[who]+'?body='+encodeURIComponent(msg);}
+function sms(who,msg){return'sms:'+CFG.phone[who]+'?body='+encodeURIComponent(msg+'\n\nOpen: '+CFG.appUrl);}
 function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));$(id).classList.add('active');window.scrollTo(0,0);}
 
 // ── MODAL ───────────────────────────────
 function modal(icon,title,body,actions){
-  $('mIcon').textContent=icon;$('mTitle').textContent=title;$('mBody').innerHTML=body;
+  $('mIcon').textContent=icon;$('mTitle').textContent=title;$('mBody').textContent=body;
   const a=$('mActs');a.innerHTML='';
   actions.forEach(ac=>{
     const el=ac.href?document.createElement('a'):document.createElement('button');
     el.className='mbtn '+ac.cls;el.textContent=ac.label;
-    if(ac.href){el.href=ac.href;el.target='_blank';el.addEventListener('click',()=>setTimeout(closeModal,300));}
+    if(ac.href){el.href=ac.href;el.addEventListener('click',()=>setTimeout(closeModal,300));}
     else el.addEventListener('click',ac.fn);
     a.appendChild(el);
   });
@@ -669,7 +823,6 @@ $('modalOv').addEventListener('click',e=>{if(e.target===$('modalOv'))closeModal(
 function pinInput(i){if($('p'+i).value&&i<3)$('p'+(i+1)).focus();}
 function pinKey(e,i){if(e.key==='Backspace'&&!$('p'+i).value&&i>0)$('p'+(i-1)).focus();if(e.key==='Enter')tryPin();}
 function getPin(){return['p0','p1','p2','p3'].map(id=>$(id).value).join('');}
-const WELCOME_PUNS={"ryan": ["Well, well, well\u2026 if it isn't the man, the myth, the snack. \ud83c\udf2e", "Alert: a snack has entered the building. \ud83d\udd14", "The legend has logged in. Try to act normal. \ud83d\ude0f", "Ryan has entered the chat. Aryel's day just got better. \u2728", "Warning: extreme handsomeness detected. \ud83d\udea8"], "aryel": ["She's here. Hide the good snacks\u2026 actually, don't. \ud83c\udf2e", "The chaos coordinator has arrived. We're saved. \ud83d\udc51", "Aryel is in the building. Standards just went up. \u2728", "Plot twist: the most beautiful person just logged in. \ud83d\ude0d", "Warning: dangerously cute person detected. Proceed with heart eyes. \ud83e\udd79"]};
 function tryPin(){
   const p=getPin(),err=$('pinErr');
   if(p.length<4){err.textContent='Enter your 4-digit PIN';return;}
@@ -677,12 +830,8 @@ function tryPin(){
   if(user){
     S.user=user;err.textContent='';
     setPill('ut',user);setPill('sh',user);
+    setCKUser(user);
     startDB();showScreen('hubScreen');
-    // Set welcome pun
-    const puns=WELCOME_PUNS[user]||[];
-    const pun=puns[Math.floor(Math.random()*puns.length)]||'';
-    const tg=$('hubTagline');
-    if(tg&&pun)tg.textContent=pun;
   }else{
     err.textContent="Hmm, that PIN isn't right…";
     ['p0','p1','p2','p3'].forEach(id=>$(id).value='');$('p0').focus();
@@ -713,61 +862,11 @@ function renderCal(){
     g.appendChild(c);
   }
 }
-function renderSavedSoloItems(){
-  const grid=$('soloGrid');if(!grid)return;
-  const pool=POOLS['solo-custom']||[];
-  pool.forEach(item=>{
-    if(grid.querySelector(`[data-n="${CSS.escape(item.n)}"]`))return; // skip if already there
-    const d=document.createElement('div');d.className='solo-item';d.dataset.n=item.n;
-    d.innerHTML=`<div class="chk">✓</div><div class="si-name">${item.n}</div><span class="si-tag">Custom</span>`;
-    d.addEventListener('click',()=>toggleSolo(d));
-    grid.appendChild(d);
-  });
-}
-function showOrderModal(order){
-  const isMine=order.sender===S.user;
-  const items=(order.items||[]).map(i=>`<div style="padding:5px 0;border-bottom:1px solid var(--border);font-family:var(--fs);font-style:italic;font-size:0.85rem;color:var(--form-text)">• ${i}</div>`).join('');
-  const statusColor={pending:'var(--gold)',accepted:'var(--green)',declined:'var(--red)',modified:'var(--teal)'}[order.status]||'var(--muted)';
-  const meta=`<div style="font-size:0.65rem;color:var(--muted);margin-bottom:10px">${isMine?'↑ You → '+cap(order.recipient):'↓ From '+cap(order.sender)} · ${order.timing} · <span style="color:${statusColor}">${order.status}</span></div>`;
-  const body=meta+'<div style="margin-bottom:10px">'+items+'</div>';
-  $('mIcon').textContent='🌮';
-  $('mTitle').textContent=order.label;
-  $('mBody').innerHTML=body;
-  const a=$('mActs');a.innerHTML='';
-  const actions=[];
-  if(order.status==='pending'&&order.recipient===S.user){
-    actions.push({label:'✓ Accept',cls:'primary',fn:async()=>{
-      await dbUp('orders',order._fid,{status:'accepted'});
-      const link=sms(order.sender,`✅ UberTease: ${cap(S.user)} accepted your ${order.label} order — ${order.timing}!\n\nGet ready. 🌮`);
-      closeModal();
-      modal('✅','Order Accepted!',`Tap below to let ${cap(order.sender)} know.`,[
-        {label:`📱 Notify ${cap(order.sender)}`,cls:'primary',href:link},
-        {label:'Done',cls:'ghost',fn:closeModal}
-      ]);
-    }});
-    actions.push({label:'✎ Modify',cls:'ghost',fn:async()=>{
-      const newItems=prompt('Edit items (comma separated):',order.items.join(', '));
-      if(!newItems)return;
-      const updated=newItems.split(',').map(x=>x.trim()).filter(Boolean);
-      await dbUp('orders',order._fid,{status:'modified',items:updated});
-      toast('Order modified.');closeModal();
-    }});
-  }
-  actions.push({label:'Close',cls:'ghost',fn:closeModal});
-  actions.forEach(ac=>{
-    const el=ac.href?document.createElement('a'):document.createElement('button');
-    el.className='mbtn '+ac.cls;el.textContent=ac.label;
-    if(ac.href){el.href=ac.href;el.addEventListener('click',()=>setTimeout(closeModal,300));}
-    else el.addEventListener('click',ac.fn);
-    a.appendChild(el);
-  });
-  $('modalOv').classList.add('open');
-}
 function renderPending(){
   const el=$('hubPending');if(!el)return;
   const SC={pending:'var(--gold)',accepted:'var(--green)',declined:'var(--red)',modified:'var(--teal)',rescheduled:'var(--teal)'};
   const all=[
-    ..._orders.map(o=>({type:'ut',id:o.id,fid:o._fid,title:o.label,status:o.status,meta:o.timing+' · '+(o.items?.length||0)+' item(s) · From '+cap(o.sender||''),_raw:o})),
+    ..._orders.map(o=>({type:'ut',id:o.id,fid:o._fid,title:o.label,status:o.status,meta:o.timing+' · '+(o.items?.length||0)+' item(s) · From '+cap(o.sender||'')})),
     ..._reqs.map(r=>({type:'sh',id:r.id,fid:r._fid,title:r.topic,status:r.status,meta:fmtDT(r.date,r.time)+' · From '+cap(r.sender||'')}))
   ];
   if(!all.length){el.innerHTML='<div class="hub-empty">All clear. Suspiciously quiet around here. 🌮</div>';return;}
@@ -776,11 +875,7 @@ function renderPending(){
     const sc=SC[item.status]||'var(--muted)';
     const div=document.createElement('div');div.className='pend-item';
     div.innerHTML=`<div class="pi-dot ${item.type}"></div><div class="pi-body"><div class="pi-title">${item.title}<span class="pi-stat" style="color:${sc}">${item.status}</span></div><div class="pi-meta">${item.meta}</div></div><button class="del-btn">✕</button>`;
-    if(item.type==='ut'){
-      div.querySelector('.pi-body').addEventListener('click',()=>showOrderModal(item._raw));
-    } else {
-      div.querySelector('.pi-body').addEventListener('click',()=>showScreen('shScreen'));
-    }
+    div.querySelector('.pi-body').addEventListener('click',()=>showScreen(item.type==='ut'?'utScreen':'shScreen'));
     div.querySelector('.del-btn').addEventListener('click',async()=>{await dbDel(item.type==='ut'?'orders':'requests',item.fid);toast('Deleted.');});
     el.appendChild(div);
   });
@@ -819,13 +914,6 @@ function addSoloCustom(){
   d.innerHTML=`<div class="chk">✓</div><div class="si-name">${v}</div><span class="si-tag">Custom</span>`;
   d.addEventListener('click',()=>toggleSolo(d));
   $('soloGrid').appendChild(d);anim(d);inp.value='';
-  // Save to Firestore so it persists and enters the rotation
-  const pool='solo-custom';
-  if(!POOLS[pool])POOLS[pool]=[];
-  if(!POOLS[pool].find(x=>x.n===v)){
-    POOLS[pool].push({n:v,t:'Custom'});
-    dbAdd('customItems',{pool,n:v,t:'Custom'}).catch(e=>console.warn('save custom:',e));
-  }
 }
 function setSchedPill(group,el){
   const k=group==='solo'?'soloPill':'dinerPill';S[k]=el.dataset.v;
@@ -857,19 +945,12 @@ function addMenuCustom(inp){
   const tier=inp.dataset.tier,v=inp.value.trim();if(!v)return;
   const bc=tier==='sweet'?'ba':tier==='savory'?'bm':'bc';
   const bl=tier==='sweet'?'App':tier==='savory'?'Main':'Chef';
-  const pool=tier==='sweet'?'sweet-tease':tier==='savory'?'savory-pos':'indulge-adv';
-  const d=document.createElement('div');d.className='mitem';d.dataset.pool=pool;
-  d.innerHTML=`<div class="chk">✓</div><div class="mi-body"><div class="mi-name">${v}</div><div class="mi-note">Custom addition</div></div><span class="mi-badge ${bc}">${bl}</span><button class="repl">↺</button>`;
+  const d=document.createElement('div');d.className='mitem';
+  d.innerHTML=`<div class="chk">✓</div><div class="mi-body"><div class="mi-name">${v}</div><div class="mi-note">Custom addition</div></div><span class="mi-badge ${bc}">${bl}</span>`;
   d.querySelector('.chk').addEventListener('click',()=>toggleMI(d));
   d.querySelector('.mi-body').addEventListener('click',()=>toggleMI(d));
-  d.querySelector('.repl').addEventListener('click',()=>replMI(d));
   inp.closest('.tier-panel').querySelector('.add-row').before(d);
   anim(d);inp.value='';
-  // Save to Firestore pool so it can appear as a swap option
-  if(!POOLS[pool].find(x=>x.n===v)){
-    POOLS[pool].push({n:v,t:'Custom'});
-    dbAdd('customItems',{pool,n:v,t:'Custom'}).catch(e=>console.warn('save custom:',e));
-  }
 }
 function renderSidebar(){
   const list=$('orderList'),meta=$('sbMeta'),btn=$('dinerSendBtn');
@@ -988,10 +1069,6 @@ async function handleSH(btn,req){
 
 // ── WIRE UP ─────────────────────────────
 document.addEventListener('DOMContentLoaded',()=>{
-  // Force dark color-scheme on date/time inputs so Chrome shows white icons
-  document.querySelectorAll('input[type="date"],input[type="time"]').forEach(el=>{
-    el.style.colorScheme='dark';
-  });
   // PIN
   ['p0','p1','p2','p3'].forEach((id,i)=>{
     $(id).addEventListener('input',()=>pinInput(i));
@@ -1033,7 +1110,250 @@ document.addEventListener('DOMContentLoaded',()=>{
   $('shPillRyan').addEventListener('click',()=>setPill('sh','ryan'));
   $('shPillAryel').addEventListener('click',()=>setPill('sh','aryel'));
   $('shSubmit').addEventListener('click',submitSH);
+
+  // CK
+  $('ckBack').addEventListener('click',()=>showScreen('hubScreen'));
+  $('ckPillRyan').addEventListener('click',()=>setCKUser('ryan'));
+  $('ckPillAryel').addEventListener('click',()=>setCKUser('aryel'));
+  $('ckGenBtn').addEventListener('click',ckGenerate);
+  $('ckUp').addEventListener('click',()=>ckRate('up'));
+  $('ckDown').addEventListener('click',()=>ckRate('down'));
+  $('ckMod').addEventListener('click',ckToggleMod);
+  $('ckModSubmit').addEventListener('click',ckSubmitMod);
+  $('ckRyanHdr').addEventListener('click',()=>ckToggleList('ryan'));
+  $('ckAryelHdr').addEventListener('click',()=>ckToggleList('aryel'));
+  $('ckCompHdr').addEventListener('click',()=>ckToggleList('comp'));
+  $('goCK').addEventListener('click',()=>showScreen('ckScreen'));
 });
+
+// ── CURIOSITY POOL ──────────────────────
+const CK_POOL=[
+  // Mild / Romantic
+  'Slow dance with no music — just hands and swaying','Read me something that turns you on','Undress each other with the lights on — no rushing',
+  'Massage with oil — full body, no agenda','Draw a bath together and just talk','Spend 10 minutes kissing and nothing else',
+  'Write each other a note about one thing you want more of','Describe your favorite memory of us in detail',
+  // Playful / Teasing
+  'The no-hands rule — mouth and body only','Blindfold me and do whatever you want for 10 minutes',
+  'Tease me until I beg — then make me wait longer','Ice cube trail from neck to thigh — slow',
+  'Whisper exactly what you want me to do before doing it','We don\'t finish until someone says the safe word',
+  'Dirty talk only — no touching until I say go','Sensory play — blindfold + feather + ice',
+  // Role Play
+  'Boss and employee — staying late to discuss your performance','Strangers who meet at a bar and go home together',
+  'Forbidden affair — we shouldn\'t be doing this','Masseuse and client who takes things further',
+  'Doctor and patient after hours','Strangers on a train — anonymous and brief',
+  'Old flames reuniting — one last night','Celebrity and obsessed fan — you decide who\'s who',
+  'Personal trainer and very motivated client','Royalty and the commoner who snuck in',
+  // NSFW / Specific
+  'Oral — you receive, I give, no reciprocating tonight','Oral — I receive, you give, take your time',
+  'Finish on me — wherever you want','From behind, slow, lights off',
+  'On top — you control everything, I don\'t move','Face to face, eyes open the whole time',
+  'Hands only — bring me all the way without anything else','Talk me through everything you\'re going to do first',
+  'We edge three times before finishing','Record a voice note describing what you want — send it before bed',
+  // Kink / Advanced
+  'Soft restraints — wrists tied, hands useless','Full blindfold — total sensory surrender',
+  'Dominance swap — you\'re in charge for the first half, I take over after','Spanking — light, as a tease, not punishment',
+  'Wax play — careful drips on the back','Collared and led — symbolic surrender for the night',
+  'Gag — nothing too intense, just the idea of it','The negotiation game — I ask for one thing, you counter with another',
+  'Wear something I choose for the evening — no questions asked','Worship session — 20 minutes focused entirely on you, nothing else',
+  // Very Kinky
+  'Golden shower — you on me','Golden shower — me on you',
+  'Full public tease — my hand, your lap, somewhere we shouldn\'t','Wear a toy out to dinner — I hold the remote',
+  'Consensual non-consent scene — we set the rules first','Degradation play — words only, agreed terms beforehand',
+  'Primal chase — I run, you catch me, nature takes its course','Anal play — fingers or toy, slow and careful',
+  'Threesome fantasy — describe exactly how you imagine it','Temperature play — heated oil vs ice, alternating',
+];
+
+// ── CK STATE ────────────────────────────
+let _ckRatings=[];// [{id,user,text,rating,note,ts}]
+let _ckStarted=false;
+let ckUser=null;
+let ckCurrent=null;
+let ckShown=new Set();// ids of rated items in this session pool
+
+function startCKListener(){
+  // CK ratings listener is started inside startDB — nothing extra needed here
+}
+
+function setCKUser(who){
+  ckUser=who;
+  $('ckPillRyan').classList.toggle('active',who==='ryan');
+  $('ckPillAryel').classList.toggle('active',who==='aryel');
+  renderCKLists();
+}
+
+function ckGetUnrated(){
+  const rated=new Set(_ckRatings.filter(r=>r.user===ckUser).map(r=>r.text));
+  return CK_POOL.filter(t=>!rated.has(t));
+}
+
+function ckGenerate(){
+  if(!ckUser){toast('Select who you are first');return;}
+  const unrated=ckGetUnrated();
+  if(!unrated.length){
+    $('ckPoolNote').textContent='You\'ve rated everything — pool will reset next time!';
+    toast('You\'ve seen them all! Resetting next session.');
+    return;
+  }
+  // Pick one not shown this session
+  const fresh=unrated.filter(t=>!ckShown.has(t));
+  const pool=fresh.length?fresh:unrated;// fallback if all shown this session
+  const pick=pool[Math.floor(Math.random()*pool.length)];
+  ckCurrent=pick;
+  ckShown.add(pick);
+  // Animate orb
+  const orb=$('ckOrb'),content=$('ckOrbContent');
+  orb.classList.remove('glowing');
+  content.innerHTML='<div class="ck-orb-text">…</div>';
+  orb.classList.add('shaking');
+  setTimeout(()=>{
+    orb.classList.remove('shaking');
+    content.innerHTML=`<div class="ck-orb-text show">${pick}</div>`;
+    orb.classList.add('glowing');
+    $('ckActions').classList.add('show');
+    $('ckModArea').classList.remove('show');
+    $('ckModInput').value='';
+    const left=ckGetUnrated().length;
+    $('ckPoolNote').textContent=left+' suggestion'+(left!==1?'s':'')+' left to explore';
+  },550);
+}
+
+function ckToggleMod(){
+  $('ckModArea').classList.toggle('show');
+}
+
+async function ckRate(rating){
+  if(!ckUser||!ckCurrent){toast('Generate a suggestion first');return;}
+  await _db().collection('ck_ratings').add({user:ckUser,text:ckCurrent,rating,note:null,ts:Date.now()});
+  $('ckActions').classList.remove('show');
+  $('ckModArea').classList.remove('show');
+  $('ckOrbContent').innerHTML='<div class="ck-orb-idle">Tap Generate<br>to reveal</div>';
+  $('ckOrb').classList.remove('glowing');
+  ckCurrent=null;
+  toast(rating==='up'?'👍 Logged to your list':'👎 Hard pass noted');
+}
+
+async function ckSubmitMod(){
+  if(!ckUser||!ckCurrent){return;}
+  const note=$('ckModInput').value.trim();
+  if(!note){toast('Add your modification first');return;}
+  await _db().collection('ck_ratings').add({user:ckUser,text:ckCurrent,rating:'up',note,ts:Date.now()});
+  $('ckActions').classList.remove('show');
+  $('ckModArea').classList.remove('show');
+  $('ckOrbContent').innerHTML='<div class="ck-orb-idle">Tap Generate<br>to reveal</div>';
+  $('ckOrb').classList.remove('glowing');
+  ckCurrent=null;
+  toast('✏️ Modified and saved to your list');
+}
+
+function ckToggleList(who){
+  const bodyId=who==='ryan'?'ckRyanBody':who==='aryel'?'ckAryelBody':'ckCompBody';
+  $(bodyId).classList.toggle('open');
+}
+
+function renderCKLists(){
+  // ── Mutual ──
+  const ryanUp=new Set(_ckRatings.filter(r=>r.user==='ryan'&&r.rating==='up').map(r=>r.text));
+  const aryelUp=new Set(_ckRatings.filter(r=>r.user==='aryel'&&r.rating==='up').map(r=>r.text));
+  const mutual=[...ryanUp].filter(t=>aryelUp.has(t));
+  const mutualEl=$('ckMutual'),mutualList=$('ckMutualList');
+  if(mutual.length){
+    mutualEl.style.display='block';
+    mutualList.innerHTML=mutual.map(t=>`<div class="ck-mutual-item">✦ ${t}</div>`).join('');
+  }else{
+    mutualEl.style.display='none';
+  }
+
+  // ── Per-person lists ──
+  ['ryan','aryel'].forEach(who=>{
+    const ratings=_ckRatings.filter(r=>r.user===who);
+    const ups=ratings.filter(r=>r.rating==='up');
+    const downs=ratings.filter(r=>r.rating==='down');
+    const count=$(who==='ryan'?'ckRyanCount':'ckAryelCount');
+    const body=$(who==='ryan'?'ckRyanBody':'ckAryelBody');
+    count.textContent=ratings.length+' response'+(ratings.length!==1?'s':'');
+    let html='';
+    if(ups.length){
+      html+=`<div class="ck-group-title up">👍 Into It (${ups.length})</div>`;
+      html+=ups.map(r=>`<div class="ck-entry">
+        <div class="ck-entry-text">${r.text}${r.note?`<div class="ck-entry-note">✏️ ${r.note}</div>`:''}</div>
+        <button class="ck-edit-btn" data-fid="${r._fid}" data-user="${who}" title="Change response">✎</button>
+      </div>`).join('');
+    }
+    if(downs.length){
+      html+=`<div class="ck-group-title down">👎 Hard Pass (${downs.length})</div>`;
+      html+=downs.map(r=>`<div class="ck-entry">
+        <div class="ck-entry-text">${r.text}</div>
+        <button class="ck-edit-btn" data-fid="${r._fid}" data-user="${who}" title="Change response">✎</button>
+      </div>`).join('');
+    }
+    if(!ratings.length) html='<div class="ck-empty-list">Nothing rated yet</div>';
+    body.innerHTML=html;
+    // Wire edit buttons
+    body.querySelectorAll('.ck-edit-btn').forEach(btn=>{
+      btn.addEventListener('click',()=>ckEditRating(btn.dataset.fid,btn.dataset.user));
+    });
+  });
+
+  // ── Comparison view ──
+  const compBody=$('ckCompBody'),compCount=$('ckCompCount');
+  if(!compBody)return;
+  // Get all unique texts rated by either person
+  const allTexts=new Set(_ckRatings.map(r=>r.text));
+  const ryanRatings=Object.fromEntries(_ckRatings.filter(r=>r.user==='ryan').map(r=>[r.text,r]));
+  const aryelRatings=Object.fromEntries(_ckRatings.filter(r=>r.user==='aryel').map(r=>[r.text,r]));
+  // Categorize: green = both up, stop = one up + one down, other combos
+  const green=[],stop=[],partial=[];
+  allTexts.forEach(text=>{
+    const r=ryanRatings[text],a=aryelRatings[text];
+    if(!r||!a) return; // only show items both have rated
+    if(r.rating==='up'&&a.rating==='up') green.push(text);
+    else if((r.rating==='up'&&a.rating==='down')||(r.rating==='down'&&a.rating==='up')) stop.push(text);
+    else if(r.rating==='down'&&a.rating==='down') partial.push(text);
+  });
+  const total=green.length+stop.length+partial.length;
+  compCount.textContent=total>0?`${total} shared ratings`:'Rate the same items to compare';
+  let html='';
+  if(green.length){
+    html+=`<div class="ck-group-title comp-go">🟢 Green Light — Both Into It (${green.length})</div>`;
+    html+=green.map(t=>{
+      const r=ryanRatings[t],a=aryelRatings[t];
+      const rLabel='Ryan 👍'+(r.note?' — '+r.note:'');
+      const aLabel='Aryel 👍'+(a.note?' — '+a.note:'');
+      return `<div class="ck-comp-item"><div class="ck-comp-text">${t}</div><div class="ck-comp-row"><span class="ck-comp-tag go">${rLabel}</span><span class="ck-comp-tag go">${aLabel}</span></div></div>`;
+    }).join('');
+  }
+  if(stop.length){
+    html+=`<div class="ck-group-title comp-stop">🛑 Stop Sign — Mismatched (${stop.length})</div>`;
+    html+=stop.map(t=>{
+      const r=ryanRatings[t],a=aryelRatings[t];
+      const rTag=r.rating==='up'?'go':'stop', aTag=a.rating==='up'?'go':'stop';
+      const rIcon=r.rating==='up'?'👍':'👎', aIcon=a.rating==='up'?'👍':'👎';
+      return `<div class="ck-comp-item"><div class="ck-comp-text">${t}</div><div class="ck-comp-row">
+        <span class="ck-comp-tag ${rTag}">Ryan ${rIcon}</span>
+        <span class="ck-comp-tag ${aTag}">Aryel ${aIcon}</span>
+      </div></div>`;
+    }).join('');
+  }
+  if(partial.length){
+    html+=`<div class="ck-group-title down">🚫 Both Passed (${partial.length})</div>`;
+    html+=partial.map(t=>`<div class="ck-comp-item"><div class="ck-comp-text">${t}</div><div class="ck-comp-row"><span class="ck-comp-tag stop">Ryan 👎</span><span class="ck-comp-tag stop">Aryel 👎</span></div></div>`).join('');
+  }
+  if(!html) html='<div class="ck-empty-list">Rate the same suggestions to see the comparison here</div>';
+  compBody.innerHTML=html;
+}
+
+async function ckEditRating(fid,who){
+  if(S.user!==who){toast('You can only edit your own responses');return;}
+  // Find the rating
+  const rating=_ckRatings.find(r=>r._fid===fid);
+  if(!rating)return;
+  // Show modal with options
+  modal('✎','Change Your Response',`"${rating.text}"\n\nWhat do you want to change it to?`,[
+    {label:'👍 Into It',cls:'ghost',fn:async()=>{await _db().collection('ck_ratings').doc(fid).update({rating:'up',note:null});closeModal();toast('Updated to 👍');}},
+    {label:'👎 Hard Pass',cls:'ghost',fn:async()=>{await _db().collection('ck_ratings').doc(fid).update({rating:'down',note:null});closeModal();toast('Updated to 👎');}},
+    {label:'🗑 Remove',cls:'ghost',fn:async()=>{await _db().collection('ck_ratings').doc(fid).delete();closeModal();toast('Removed.');}}
+  ]);
+}
 </script>
 </body>
 </html>
